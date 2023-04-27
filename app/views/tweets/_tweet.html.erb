@@ -4,3 +4,11 @@
     <%= link_to  "投稿者：#{tweet.user.name}", user_path(tweet.user)%>
   </div>
 </div>
+  <div id="like-btn<%= tweet.id %>">
+    <% if user_signed_in? && tweet.liked_by?(current_user)%>
+      <%=link_to "いいね済", tweet_likes_path(tweet.id),  method: :delete, class: "tweet_likes" %>
+    <% else %>
+      <%=link_to "いいねする", tweet_likes_path(tweet.id), method: :post, class: "tweet_likes" %>
+    <% end %>
+  </div>
+</div>
